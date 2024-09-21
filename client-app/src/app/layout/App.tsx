@@ -1,27 +1,24 @@
-import { useEffect } from "react";
 import { Container } from "semantic-ui-react";
-import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
-import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
-import LoadingComponent from "./LoadingComponents";
+import { Outlet, useLocation } from "react-router-dom";
+import HomePage from "../../features/home/HomePage";
 import Navbar from "./Navbar";
 
 function App() {
-  const { activityStore } = useStore();
-
-  useEffect(() => {
-    activityStore.loadActivities();
-  }, [activityStore]);
-
-  if (activityStore.loadingInitial)
-    return <LoadingComponent content="Loading app..." />;
+  const location = useLocation();
 
   return (
     <>
-      <Navbar />
-      <Container style={{ marginTop: "7em" }}>
-        <ActivityDashboard />
-      </Container>
+      {location.pathname === "/" ? (
+        <HomePage />
+      ) : (
+        <>
+          <Navbar />
+          <Container style={{ marginTop: "7em" }}>
+            <Outlet />
+          </Container>
+        </>
+      )}
     </>
   );
 }
