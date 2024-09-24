@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import "./app/layout/styles.css";
+import "react-datepicker/dist/react-datepicker.css";
 import { router } from "./app/router/route";
 import { store, StoreContext } from "./app/stores/store";
 import "react-calendar/dist/Calendar.css";
