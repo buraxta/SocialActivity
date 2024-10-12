@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+    // [ApiController]
+    // [Route("api/[controller]")]
+    [AllowAnonymous]
     public class ActivitiesController : BaseApiController
     {
         [HttpGet]
